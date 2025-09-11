@@ -8,55 +8,54 @@ namespace inheritance
 {
     internal class Program
     {
+        class TestPerson
+        {// 基底クラス
+            public string Name { get; set; }
+            public int Age { get; set; }
 
-// 基底クラス
-class Person
-    {
-        public string Name { get; set; }
-        public int Age { get; set; }
+            public TestPerson(string name, int age)
+            {
+                Name = name;
+                Age = age;
 
-        public Person(string name, int age)
-        {
-            Name = name;
-            Age = age;
+                // コンソール出力処理1
+                Console.WriteLine("基底クラス");
+                Console.WriteLine($"名前:{Name},年齢:{Age}");
+            }
         }
 
-        public virtual void ShowInfo()
+        // 派生クラス
+        class TestInfo : TestPerson
         {
-            Console.WriteLine($"名前: {Name}, 年齢: {Age}");
+            public int Height { get; set; }
+            public int Weight { get; set; }
+
+            public TestInfo(string name, int age, int height, int weight)
+                : base(name, age)
+            {
+                Height = height;
+                Weight = weight;
+
+                Console.WriteLine("派生クラス");
+                Console.WriteLine($"身長:{Height},体重:{Weight}");
+            }
         }
+
+
+
+
+        class s
+        {
+            static void Main(string[] args)
+            {
+                // 派生クラスのインスタンス生成
+                TestInfo s = new TestInfo("山田", 20, 170, 60);
+
+                // メソッド呼び出し
+
+            }
+        }
+
     }
 
-    // 派生クラス
-    class Student : Person
-    {
-        public int Height { get; set; }
-        public int Weight { get; set; }
 
-        public Student(string name, int age, int height, int weight)
-            : base(name, age)
-        {
-            Height = height;
-            Weight = weight;
-        }
-
-        public override void ShowInfo()
-        {
-            Console.WriteLine($"名前: {Name}, 年齢: {Age}, 身長: {Height}, 体重: {Weight}");
-        }
-    }
-
-    class inheritance
-        {
-        static void Main(string[] args)
-        {
-            // 派生クラスのインスタンス生成
-            Student s = new Student("山田", 20, 170, 60);
-
-            // メソッド呼び出し
-            s.ShowInfo();
-        }
-    }
-
-}
-}
